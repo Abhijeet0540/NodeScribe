@@ -7,6 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="/public/stylesheet/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="">
@@ -25,18 +28,29 @@
             </form>
         </div>
 
+
         <div class="flex flex-wrap gap-6 mt-10">
-            <% if(files.length> 0) { %>
+            <% if (files.length> 0) { %>
                 <% files.forEach(function(file) { %>
-                    <div class="w-72 p-6 bg-[#CFD8DC] rounded-md shadow-md">
-                        <h1 class="text-xl text-[#263238] tracking-wider">
+                    <div class="w-72 p-6 bg-[#CFD8DC] rounded-md shadow-md relative group">
+                        <!-- Edit Icon with link -->
+                        <a href="/edit/<%= file %>"
+                            class="absolute top-3 right-3 text-[#37474F] hover:text-[#263238] transition-colors duration-300">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <!-- Title -->
+                        <h1 class="text-xl text-[#263238] tracking-wider mt-4">
                             <%= file.replace('.txt', '' ).substring(0, 20) + '...' %>
                         </h1>
+
+                        <!-- Read More Link -->
                         <a href="/files/<%= file %>"
-                            class="text-[#37474F] border border-[#546E7A] bg-[#B0BEC5] px-3 py-1 inline-block mt-4 rounded-md">Read
-                            More</a>
+                            class="text-[#37474F] border border-[#546E7A] bg-[#B0BEC5] px-3 py-1 inline-block mt-4 rounded-md hover:bg-[#90A4AE] transition-all duration-300">
+                            Read More
+                        </a>
                     </div>
-                    <% })%>
+                    <% }) %>
                         <% } else { %>
                             <h3 class="text-[#455A64] mt-5">No task found</h3>
                             <% } %>

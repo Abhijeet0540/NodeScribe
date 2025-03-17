@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="/stylesheet/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-[#ECEFF1] min-h-screen flex items-center justify-center">
+    <section class="p-10 bg-[#CFD8DC] rounded-lg shadow-lg w-full max-w-2xl animate-fade-in">
+        <!-- Back to Home -->
+        <a href="/" class="text-[#37474F] font-semibold text-lg hover:text-[#263238] transition-colors duration-300 relative group">
+            <i class="fa-solid fa-arrow-left mr-1"></i> Back to Home
+            <span class="block h-0.5 bg-[#37474F] absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"></span>
+        </a>
+
+        <!-- Edit Form Title -->
+        <h1 class="text-3xl font-bold text-[#263238] mt-6 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-pen-to-square text-[#37474F]"></i> Edit Task
+        </h1>
+
+        <!-- Edit Form -->
+        <form action="/update/<%= filename %>" method="post" class="flex flex-col gap-4">
+            <input type="text" name="title" value="<%= filename.replace('.txt', '') %>" 
+                placeholder="Title goes here..." 
+                class="bg-[#B0BEC5] text-[#263238] block w-full rounded-md outline-none px-3 py-2 border border-[#90A4AE]" />
+
+            <textarea name="details" placeholder="Description goes here..." 
+                class="bg-[#B0BEC5] text-[#263238] block w-full rounded-md outline-none px-3 py-2 border border-[#90A4AE] h-32"><%= details %></textarea>
+
+            <input name="additional" value="<%= additionaldetails %>" placeholder="Additional info..." 
+                class="bg-[#B0BEC5] text-[#263238] block w-full rounded-md outline-none px-3 py-2 border border-[#90A4AE]" />
+
+            <input type="submit" value="Update Task"
+                class="bg-[#455A64] hover:bg-[#37474F] px-4 py-2 text-white rounded-md mt-4 w-1/3 cursor-pointer" />
+        </form>
+    </section>
+</body>
+
+</html>
