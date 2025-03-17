@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-red-100">
+    <section
+        class="container mx-auto p-10 bg-[#ECEFF1] min-h-screen flex flex-col items-center justify-center space-y-6 animate-fade-in">
+        <!-- Back to Home link -->
+        <a href="/"
+            class="text-[#37474F] font-semibold text-lg hover:text-[#263238] transition-colors duration-300 relative group">
+            <i class="fa-solid fa-arrow-left "></i> Back to Home
+            <span
+                class="block h-0.5 bg-[#37474F] absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"></span>
+        </a>
+
+        <!-- Animated Title -->
+        <h1 class="text-4xl font-bold text-[#263238] tracking-wider animate-slide-up delay-200 flex items-center gap-2">
+            <!-- Document Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#37474F]" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 17v-6h13V5a2 2 0 00-2-2H6a2 2 0 00-2 2v6h2v6l2 2h6l2-2z" />
+            </svg>
+            <%= filename.replace('.txt', '' ) %>
+        </h1>
+
+        <!-- Animated Paragraph -->
+        <p class="text-[#455A64] text-lg max-w-2xl text-center animate-slide-up delay-300">
+            <%= data %>
+        </p>
+    </section>
+
+</body>
+
+</html>
