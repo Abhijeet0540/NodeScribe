@@ -137,7 +137,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Font Awesome](https://fontawesome.com/) for the icons
 - All open-source contributors whose libraries made this project possible
 
----
+--- 
 
 <div align="center">
 Made with ❤️ by [ Abhi ]
