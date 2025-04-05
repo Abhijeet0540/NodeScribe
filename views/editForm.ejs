@@ -4,44 +4,69 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Task</title>
+    <title>NodeScribe - Edit Task</title>
     <link rel="stylesheet" href="/stylesheet/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="bg-[#ECEFF1] min-h-screen flex items-center justify-center">
-    <section class="p-10 bg-[#CFD8DC] rounded-lg shadow-lg w-full max-w-2xl animate-fade-in">
-        <!-- Back to Home -->
-        <a href="/" class="text-[#37474F] font-semibold text-lg hover:text-[#263238] transition-colors duration-300 relative group">
-            <i class="fa-solid fa-arrow-left mr-1"></i> Back to Home
-            <span class="block h-0.5 bg-[#37474F] absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"></span>
-        </a>
+<body class="bg-[#ECEFF1]">
+    <!-- Header -->
+    <header class="bg-[#37474F] text-white py-4 shadow-md">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <i class="fas fa-book"></i> NodeScribe
+            </h1>
+            <a href="/" class="text-white hover:text-[#B0BEC5] transition-colors duration-300 flex items-center gap-2">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+    </header>
 
-        <!-- Edit Form Title -->
-        <h1 class="text-3xl font-bold text-[#263238] mt-6 mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-pen-to-square text-[#37474F]"></i> Edit Task
-        </h1>
+    <div class="container mx-auto p-6 md:p-10 min-h-screen flex items-center justify-center">
+        <section class="p-8 bg-[#CFD8DC] rounded-lg shadow-lg w-full max-w-2xl animate-fade-in">
+            <!-- Edit Form Title -->
+            <h1 class="text-3xl font-bold text-[#263238] mb-6 flex items-center gap-2">
+                <i class="fas fa-pen-to-square text-[#37474F]"></i> Edit Task
+            </h1>
 
-        <!-- Edit Form -->
-        <form action="/update/<%= filename %>" method="post" class="flex flex-col gap-4">
-            <input type="text" name="title" value="<%= filename.replace('.txt', '') %>" 
-                placeholder="Title goes here..." 
-                class="bg-[#B0BEC5] text-[#263238] block w-full rounded-md outline-none px-3 py-2 border border-[#90A4AE]" />
+            <!-- Edit Form -->
+            <form action="/update/<%= filename %>" method="post" class="flex flex-col gap-5">
+                <div class="flex flex-col">
+                    <label for="title" class="text-[#37474F] font-medium mb-1">Title</label>
+                    <input type="text" id="title" name="title" value="<%= filename.replace('.txt', '') %>"
+                        placeholder="Enter task title" required
+                        class="bg-[#B0BEC5] text-[#263238] block w-full rounded-md outline-none px-3 py-2 border border-[#90A4AE] focus:ring-2 focus:ring-[#546E7A] transition-all" />
+                </div>
 
-            <textarea name="details" placeholder="Description goes here..." 
-                class="bg-[#B0BEC5] text-[#263238] block w-full rounded-md outline-none px-3 py-2 border border-[#90A4AE] h-32"><%= details %></textarea>
+                <div class="flex flex-col">
+                    <label for="details" class="text-[#37474F] font-medium mb-1">Description</label>
+                    <textarea id="details" name="details" placeholder="Enter task description" rows="5" required
+                        class="bg-[#B0BEC5] text-[#263238] block w-full rounded-md outline-none px-3 py-2 border border-[#90A4AE] focus:ring-2 focus:ring-[#546E7A] transition-all"><%= details %></textarea>
+                </div>
 
-            <input name="additional" value="<%= additionaldetails %>" placeholder="Additional info..." 
-                class="bg-[#B0BEC5] text-[#263238] block w-full rounded-md outline-none px-3 py-2 border border-[#90A4AE]" />
+                <div class="flex flex-col">
+                    <label for="additional" class="text-[#37474F] font-medium mb-1">Additional Information</label>
+                    <input id="additional" name="additional" value="<%= additionaldetails %>"
+                        placeholder="Any additional details"
+                        class="bg-[#B0BEC5] text-[#263238] block w-full rounded-md outline-none px-3 py-2 border border-[#90A4AE] focus:ring-2 focus:ring-[#546E7A] transition-all" />
+                </div>
 
-            <input type="submit" value="Update Task"
-                class="bg-[#455A64] hover:bg-[#37474F] px-4 py-2 text-white rounded-md mt-4 w-1/3 cursor-pointer" />
-        </form>
-    </section>
+                <div class="flex justify-between mt-4">
+                    <a href="/files/<%= filename %>"
+                        class="bg-[#90A4AE] hover:bg-[#78909C] px-4 py-2 text-white rounded-md transition-all duration-300 flex items-center gap-2">
+                        <i class="fas fa-times"></i> Cancel
+                    </a>
+                    <button type="submit"
+                        class="bg-[#455A64] hover:bg-[#37474F] px-6 py-2 text-white rounded-md transition-all duration-300 flex items-center gap-2">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
 </body>
 
 </html>

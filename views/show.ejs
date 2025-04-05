@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>NodeScribe - View Task</title>
     <link rel="stylesheet" href="/stylesheet/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -12,37 +12,99 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="bg-red-100">
-    <section
-        class="container mx-auto p-10 bg-[#ECEFF1] min-h-screen flex flex-col items-center justify-center space-y-6 animate-fade-in">
-        <!-- Back to Home link -->
-        <a href="/"
-            class="text-[#37474F] font-semibold text-lg hover:text-[#263238] transition-colors duration-300 relative group">
-            <i class="fa-solid fa-arrow-left "></i> Back to Home
-            <span
-                class="block h-0.5 bg-[#37474F] absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"></span>
-        </a>
+<body class="bg-[#ECEFF1]">
+    <!-- Header -->
+    <header class="bg-[#37474F] text-white py-4 shadow-md">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <i class="fas fa-book"></i> NodeScribe
+            </h1>
+            <a href="/" class="text-white hover:text-[#B0BEC5] transition-colors duration-300 flex items-center gap-2">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+    </header>
 
-        <!-- Animated Title -->
-        <h1 class="text-4xl font-bold text-[#263238] tracking-wider animate-slide-up delay-200 flex items-center gap-2">
-            <!-- Document Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#37474F]" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 17v-6h13V5a2 2 0 00-2-2H6a2 2 0 00-2 2v6h2v6l2 2h6l2-2z" />
-            </svg>
-            <%= filename.replace('.txt', '' ) %>
-        </h1>
+    <div class="container mx-auto p-6 md:p-10 min-h-screen">
+        <!-- Task Details Card -->
+        <div class="max-w-3xl mx-auto bg-[#CFD8DC] rounded-lg shadow-lg overflow-hidden animate-fade-in">
+            <!-- Card Header -->
+            <div class="bg-[#455A64] text-white p-6">
+                <div class="flex justify-between items-center">
+                    <h1
+                        class="text-2xl md:text-3xl font-bold tracking-wider animate-slide-up delay-200 flex items-center gap-2">
+                        <i class="fas fa-tasks text-[#B0BEC5]"></i>
+                        <%= filename.replace('.txt', '' ) %>
+                    </h1>
 
-        <!-- Animated Paragraph -->
-        <p class="text-[#455A64] text-lg max-w-2xl text-center animate-slide-up delay-300">
-            <%= details %>
-        </p>
-        <p class="text-[#455A64] text-lg max-w-2xl text-center animate-slide-up delay-300">
-            <%= additionaldetails %>
-        </p>
-    </section>
+                    <div class="flex space-x-3">
+                        <a href="/edit/<%= filename %>"
+                            class="text-white hover:text-[#B0BEC5] transition-colors duration-300">
+                            <i class="fas fa-edit text-xl"></i>
+                        </a>
+                        <form action="/delete/<%= filename %>" method="post" class="inline"
+                            onsubmit="return confirm('Are you sure you want to delete this task?');">
+                            <button type="submit"
+                                class="text-white hover:text-[#EF5350] transition-colors duration-300">
+                                <i class="fas fa-trash-alt text-xl"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="mt-2 text-[#B0BEC5] text-sm flex items-center">
+                    <i class="far fa-calendar-alt mr-2"></i> Created: <%= new Date().toLocaleDateString() %>
+                </div>
+            </div>
 
+            <!-- Card Body -->
+            <div class="p-6 md:p-8 space-y-6">
+                <!-- Description Section -->
+                <div class="animate-slide-up delay-300">
+                    <h2 class="text-xl font-semibold text-[#263238] mb-3 flex items-center gap-2">
+                        <i class="fas fa-align-left text-[#546E7A]"></i> Description
+                    </h2>
+                    <div class="bg-[#ECEFF1] p-4 rounded-md shadow-inner border border-[#B0BEC5]">
+                        <p class="text-[#455A64] text-lg">
+                            <%= details %>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Additional Details Section -->
+                <% if (additionaldetails && additionaldetails.trim() !=='' ) { %>
+                    <div class="animate-slide-up delay-400">
+                        <h2 class="text-xl font-semibold text-[#263238] mb-3 flex items-center gap-2">
+                            <i class="fas fa-info-circle text-[#546E7A]"></i> Additional Information
+                        </h2>
+                        <div class="bg-[#ECEFF1] p-4 rounded-md shadow-inner border border-[#B0BEC5]">
+                            <p class="text-[#455A64] text-lg">
+                                <%= additionaldetails %>
+                            </p>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="bg-[#B0BEC5] p-4 flex justify-between items-center">
+                <a href="/"
+                    class="text-[#37474F] font-semibold hover:text-[#263238] transition-colors duration-300 flex items-center gap-2">
+                    <i class="fas fa-arrow-left"></i> Back to Tasks
+                </a>
+                <a href="/edit/<%= filename %>"
+                    class="bg-[#455A64] hover:bg-[#37474F] text-white px-4 py-2 rounded-md transition-all duration-300 flex items-center gap-2">
+                    <i class="fas fa-edit"></i> Edit Task
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add animation delay class -->
+    <style>
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+    </style>
 </body>
 
 </html>

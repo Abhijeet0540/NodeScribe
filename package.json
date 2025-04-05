@@ -3,5 +3,16 @@
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "init": "^0.1.2"
-  }
+  },
+  "name": "nodescribe",
+  "description": "A lightweight task and note manager powered by Node.js, Express, and EJS with file-based storage. Create, read, and manage your tasks with a sleek UI and real-time animations.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

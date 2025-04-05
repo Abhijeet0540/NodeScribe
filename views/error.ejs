@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeScribe - Error</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-[#ECEFF1]">
+    <!-- Header -->
+    <header class="bg-[#37474F] text-white py-4 shadow-md">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <i class="fas fa-book"></i> NodeScribe
+            </h1>
+            <a href="/" class="text-white hover:text-[#B0BEC5] transition-colors duration-300 flex items-center gap-2">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-6 md:p-10 min-h-screen flex items-center justify-center">
+        <div class="max-w-md w-full bg-[#CFD8DC] rounded-lg shadow-lg overflow-hidden animate-fade-in">
+            <div class="bg-[#B71C1C] text-white p-6 flex items-center gap-4">
+                <i class="fas fa-exclamation-triangle text-4xl"></i>
+                <h1 class="text-2xl font-bold">Error Occurred</h1>
+            </div>
+            
+            <div class="p-6">
+                <p class="text-[#263238] text-lg mb-6"><%= error %></p>
+                
+                <a href="/" class="bg-[#455A64] hover:bg-[#37474F] text-white px-4 py-2 rounded-md transition-all duration-300 inline-flex items-center gap-2">
+                    <i class="fas fa-home"></i> Return to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
